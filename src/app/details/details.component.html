@@ -22,8 +22,17 @@
         <h2 class="section-heading">
             Apply now to live here 
         </h2>
-        <button class="primary" type="button">
-            Apply now
-        </button>
+        <form [formGroup]="applyForm" (submit)="submitApplication()">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" formControlName="firstName">
+
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" formControlName="lastName">
+
+            <label for="email">Email</label>
+            <input type="text" id="email" formControlName="email">
+
+            <button type="submit" class="primary"> Apply now</button>
+        </form>
     </section>
 </article>

@@ -2,10 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
-
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
@@ -14,10 +16,23 @@ export class DetailsComponent implements OnInit{
   private _housingService: HousingService = inject(HousingService);
 
   public housingLocation!: HousingLocation | undefined;
+  public applyForm = new FormGroup({
+    firstName: new FormControl(""),
+    lastName: new FormControl(""),
+    email: new FormControl(""),
+  });
 
   ngOnInit(): void {
     const housingLocationId = Number(this._route.snapshot.params["id"]);
     this.housingLocation = this._housingService.getHousingLocationById(housingLocationId); 
+  }
+
+  submitApplication(): void {
+    this._housingService.submitApplication(
+      this.applyForm.value.firstName ?? "",
+      this.applyForm.value.lastName ?? "",
+      this.applyForm.value.email ?? "",
+    );
   }
   
 }
