@@ -23,8 +23,10 @@ export class DetailsComponent implements OnInit{
   });
 
   ngOnInit(): void {
-    const housingLocationId = Number(this._route.snapshot.params["id"]);
-    this.housingLocation = this._housingService.getHousingLocationById(housingLocationId); 
+    const housingLocationId = parseInt(this._route.snapshot.params['id'], 10);
+    this._housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+      this.housingLocation = housingLocation;
+    });
   }
 
   submitApplication(): void {
