@@ -4,6 +4,7 @@ import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 @Component({
+  standalone: true,
   selector: 'app-details',
   imports: [
     ReactiveFormsModule,

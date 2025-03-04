@@ -3,6 +3,7 @@ import { HousingLocation } from '../housing-location';
 import { RouterModule } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-housing-location',
   imports: [RouterModule],
   templateUrl: './housing-location.component.html',

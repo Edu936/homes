@@ -4,6 +4,7 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
 import { HousingService } from '../housing.service';
 
 @Component({
+  standalone: true,
   selector: 'app-home',
   imports: [
     HousingLocationComponent,
